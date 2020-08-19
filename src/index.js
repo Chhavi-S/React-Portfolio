@@ -1,13 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  Route,
+  BrowserRouter as Router,
+  NavLink
+} from 'react-router-dom';
+import{
+  Nav,
+  NavItem,
+  Navbar,
+} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
+import Works from './works';
+import Contact from './contact';
 import * as serviceWorker from './serviceWorker';
 
+const routing=(
+
+  <Router>
+   <Navbar color="dark" dark expand="md">
+   
+   <Nav className="mr-auto">
+       <NavItem>
+         <NavLink activeClassName="active" className="links" exact to="/">Home</NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink activeClassName="active" className="links" to="/works">Works</NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink activeClassName="active" className="links" to="/contact">Contact</NavLink>
+       </NavItem>
+     </Nav>
+   </Navbar>
+      <Route exact path="/" component={App} />
+      <Route path="/works" component={Works} />
+      <Route path="/contact" component={Contact} />
+    
+  </Router>
+)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  routing,
   document.getElementById('root')
 );
 
